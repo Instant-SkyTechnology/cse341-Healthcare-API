@@ -91,7 +91,7 @@ router.get('/', controller.getAppointments);
  *                 type: string
  *     responses:
  *       201:
- *         description: Appointment created
+ *         description: Appointment created 
  */
 router.post('/', controller.createAppointment);
 
@@ -108,9 +108,30 @@ router.post('/', controller.createAppointment);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               patientId:
+ *                 type: string
+ *               doctorName:
+ *                 type: string
+ *               department:
+ *                 type: string
+ *               appointmentDate:
+ *                 type: string
+ *               reason:
+ *                 type: string
+ *               status:
+ *                 type: string
+ *               notes:
+ *                 type: string
  *     responses:
  *       200:
- *         description: Updated
+ *         description: Updated successfully
  */
 router.put('/:id', controller.updateAppointment);
 

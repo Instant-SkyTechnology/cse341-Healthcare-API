@@ -77,6 +77,23 @@ router.post('/', controller.createPatient);
  *         application/json:
  *           schema:
  *             type: object
+ *             properties:
+ *               firstName:
+ *                 type: string
+ *               lastName:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               phone:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               dateOfBirth:
+ *                 type: string
+ *               gender:
+ *                 type: string
+ *               medicalHistory:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Updated successfully
