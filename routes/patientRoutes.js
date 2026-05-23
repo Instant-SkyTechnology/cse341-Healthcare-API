@@ -6,7 +6,7 @@ const controller = require('../controllers/patientController');
 
 /**
  * @swagger
- * /api/patients:
+ * /patients:
  *   get:
  *     summary: Get all patients
  *     tags: [Patients]
@@ -19,7 +19,7 @@ router.get('/', controller.getPatients);
 
 /**
  * @swagger
- * /api/patients:
+ * /patients:
  *   post:
  *     summary: Create a new patient
  *     tags: [Patients]
@@ -61,7 +61,7 @@ router.post('/', controller.createPatient);
 
 /**
  * @swagger
- * /api/patients/{id}:
+ * /patients/{id}:
  *   put:
  *     summary: Update patient
  *     tags: [Patients]
@@ -103,7 +103,7 @@ router.put('/:id', controller.updatePatient);
 
 /**
  * @swagger
- * /api/patients/{id}:
+ * /patients/{id}:
  *   delete:
  *     summary: Delete patient
  *     tags: [Patients]

@@ -51,7 +51,7 @@ const controller = require('../controllers/appointmentController');
 
 /**
  * @swagger
- * /api/appointments:
+ * /appointments:
  *   get:
  *     summary: Get all appointments
  *     tags: [Appointments]
@@ -64,7 +64,7 @@ router.get('/', controller.getAppointments);
 
 /**
  * @swagger
- * /api/appointments:
+ * /appointments:
  *   post:
  *     summary: Create appointment
  *     tags: [Appointments]
@@ -98,7 +98,7 @@ router.post('/', controller.createAppointment);
 
 /**
  * @swagger
- * /api/appointments/{id}:
+ * /appointments/{id}:
  *   put:
  *     summary: Update appointment
  *     tags: [Appointments]
@@ -138,7 +138,7 @@ router.put('/:id', controller.updateAppointment);
 
 /**
  * @swagger
- * /api/appointments/{id}:
+ * /appointments/{id}:
  *   delete:
  *     summary: Delete appointment
  *     tags: [Appointments]
