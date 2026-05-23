@@ -21,8 +21,8 @@ app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 /* ---------- ROUTES ---------- */
-app.use('/api/patients', require('./routes/patientRoutes'));
-app.use('/api/appointments', require('./routes/appointmentRoutes'));
+app.use('/patients', require('./routes/patientRoutes'));
+app.use('/appointments', require('./routes/appointmentRoutes'));
 
 /* ---------- HOME ---------- */
 app.get('/', (req, res) => {
