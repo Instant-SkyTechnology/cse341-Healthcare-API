@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -11,6 +12,9 @@ connectDB();
 
 const app = express();
 
+app.use(cors({
+  origin: 'https://cse341-healthcare-api.onrender.com'
+}));
 app.use(express.json());
 
 /* ---------- SWAGGER ---------- */
