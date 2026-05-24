@@ -10,6 +10,22 @@ exports.getAppointments = async (req, res) => {
     }
 };
 
+// GET BY ID
+exports.getAppointmentById = async (req, res) => {
+    try {
+        const appointment = await Appointment.findById(req.params.id)
+            .populate("patientId");
+
+        if (!appointment) {
+            return res.status(404).json({ message: "Appointment not found" });
+        }
+
+        res.json(appointment);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 // CREATE
 exports.createAppointment = async (req, res) => {
     try {

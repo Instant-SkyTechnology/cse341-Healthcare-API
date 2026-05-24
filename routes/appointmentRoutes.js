@@ -61,6 +61,29 @@ const controller = require('../controllers/appointmentController');
  */
 router.get('/', controller.getAppointments);
 
+/**
+ * @swagger
+ * /appointments/{id}:
+ *   get:
+ *     summary: Get appointment by ID
+ *     tags: [Appointments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Appointment ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Appointment found
+ *       404:
+ *         description: Appointment not found
+ *       500:
+ *         description: Server error
+ */
+router.get('/:id', controller.getAppointmentById);
+
 
 /**
  * @swagger

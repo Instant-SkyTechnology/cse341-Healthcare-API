@@ -30,7 +30,12 @@ const options = {
     },
     servers: [
       {
-        url: process.env.SERVER_URL || 'http://localhost:3000'
+        url: process.env.HTTP_SERVER_URL,
+        description: "HTTP"
+      },
+      {
+        url: process.env.HTTPS_SERVER_URL,
+        description: "HTTPS"
       }
     ]
   },

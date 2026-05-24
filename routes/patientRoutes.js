@@ -19,6 +19,30 @@ router.get('/', controller.getPatients);
 
 /**
  * @swagger
+ * /patients/{id}:
+ *   get:
+ *     summary: Get patient by ID
+ *     tags: [Patients]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Patient ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Patient found
+ *       404:
+ *         description: Patient not found
+ *       500:
+ *         description: Server error
+ */
+router.get('/:id', controller.getPatientById);
+
+
+/**
+ * @swagger
  * /patients:
  *   post:
  *     summary: Create a new patient
