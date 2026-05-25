@@ -1,52 +1,8 @@
-// const express = require("express");
-// const router = express.Router();
-
-// const {
-//     getAppointments,
-//     createAppointment,
-//     updateAppointment,
-//     deleteAppointment
-// } = require("../controllers/appointmentController");
-
-// /**
-//  * #swagger.tags = ['Appointments']
-//  */
-// router.get("/", getAppointments);
-
-// /**
-//  * #swagger.tags = ['Appointments']
-//  * #swagger.description = 'Create appointment'
-//  * #swagger.parameters['body'] = {
-//     in: 'body',
-//     required: true,
-//     schema: {
-//         patientId: "64f1c2a1234567890abcde12",
-//         doctorName: "Dr. Smith",
-//         department: "Cardiology",
-//         appointmentDate: "2026-05-20",
-//         reason: "Checkup",
-//         status: "scheduled",
-//         notes: "First visit"
-//     }
-//  }
-//  */
-// router.post("/", createAppointment);
-
-// /**
-//  * #swagger.tags = ['Appointments']
-//  */
-// router.put("/:id", updateAppointment);
-
-// /**
-//  * #swagger.tags = ['Appointments']
-//  */
-// router.delete("/:id", deleteAppointment);
-
-// module.exports = router;
 const express = require('express');
 const router = express.Router();
 
 const controller = require('../controllers/appointmentController');
+const isAuthenticated = require('../middleware/auth');
 
 
 /**
@@ -89,6 +45,8 @@ router.get('/:id', controller.getAppointmentById);
  * @swagger
  * /appointments:
  *   post:
+ *     security:
+ *       - oauth2: []
  *     summary: Create appointment
  *     tags: [Appointments]
  *     requestBody:
@@ -116,13 +74,15 @@ router.get('/:id', controller.getAppointmentById);
  *       201:
  *         description: Appointment created 
  */
-router.post('/', controller.createAppointment);
+router.post('/', isAuthenticated, controller.createAppointment);
 
 
 /**
  * @swagger
  * /appointments/{id}:
  *   put:
+ *     security:
+ *       - oauth2: []
  *     summary: Update appointment
  *     tags: [Appointments]
  *     parameters:
@@ -156,13 +116,15 @@ router.post('/', controller.createAppointment);
  *       200:
  *         description: Updated successfully
  */
-router.put('/:id', controller.updateAppointment);
+router.put('/:id', isAuthenticated, controller.updateAppointment);
 
 
 /**
  * @swagger
  * /appointments/{id}:
  *   delete:
+ *     security:
+ *       - oauth2: []
  *     summary: Delete appointment
  *     tags: [Appointments]
  *     parameters:
@@ -175,6 +137,6 @@ router.put('/:id', controller.updateAppointment);
  *       200:
  *         description: Deleted
  */
-router.delete('/:id', controller.deleteAppointment);
+router.delete('/:id', isAuthenticated, controller.deleteAppointment);
 
 module.exports = router;

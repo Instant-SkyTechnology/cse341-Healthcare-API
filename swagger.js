@@ -1,23 +1,3 @@
-// const swaggerAutogen = require('swagger-autogen')();
-
-// const doc = {
-//   info: {
-//     title: 'Healthcare API',
-//     description: 'Healthcare API for patients and appointments'
-//   },
-//   host: 'localhost:3000',
-//   schemes: ['http', 'https']
-// };
-
-// // const outputFile = './swagger.json';
-// // const endpointsFiles = ['./routes/index.js'];
-
-// // swaggerAutogen(outputFile, endpointsFiles, doc);
-// const outputFile = "./swagger-output.json";
-// const endpointsFiles = ["./server.js"];
-
-// swaggerAutogen(outputFile, endpointsFiles, doc);
-
 const swaggerJsDoc = require('swagger-jsdoc');
 
 const options = {
@@ -26,7 +6,26 @@ const options = {
     info: {
       title: 'Healthcare API',
       version: '1.0.0',
-      description: 'Healthcare CRUD API'
+      description: 'Healthcare CRUD API',
+      components: {
+        securitySchemes: {
+          oauth2: {
+            type: 'oauth2',
+            flows: {
+              authorizationCode: {
+                authorizationUrl: 'https://github.com/login/oauth/authorize',
+                tokenUrl: 'https://github.com/login/oauth/access_token',
+                scopes: {}
+              }
+            }
+          }
+        }
+      },
+      security: [
+        {
+          oauth2: []
+        }
+      ]
     },
     servers: [
       {

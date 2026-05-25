@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const controller = require('../controllers/patientController');
+const isAuthenticated = require('../middleware/auth');
 
 
 /**
@@ -45,6 +46,8 @@ router.get('/:id', controller.getPatientById);
  * @swagger
  * /patients:
  *   post:
+ *     security:
+ *       - oauth2: []
  *     summary: Create a new patient
  *     tags: [Patients]
  *     requestBody:
@@ -80,13 +83,15 @@ router.get('/:id', controller.getPatientById);
  *       400:
  *         description: Bad request
  */
-router.post('/', controller.createPatient);
+router.post('/', isAuthenticated, controller.createPatient);
 
 
 /**
  * @swagger
  * /patients/{id}:
  *   put:
+ *     security:
+ *       - oauth2: []
  *     summary: Update patient
  *     tags: [Patients]
  *     parameters:
@@ -104,31 +109,19 @@ router.post('/', controller.createPatient);
  *             properties:
  *               firstName:
  *                 type: string
- *               lastName:
- *                 type: string
- *               email:
- *                 type: string
- *               phone:
- *                 type: string
- *               address:
- *                 type: string
- *               dateOfBirth:
- *                 type: string
- *               gender:
- *                 type: string
- *               medicalHistory:
- *                 type: string
  *     responses:
  *       200:
  *         description: Updated successfully
  */
-router.put('/:id', controller.updatePatient);
+router.put('/:id', isAuthenticated, controller.updatePatient);
 
 
 /**
  * @swagger
  * /patients/{id}:
  *   delete:
+ *     security:
+ *       - oauth2: []
  *     summary: Delete patient
  *     tags: [Patients]
  *     parameters:
@@ -141,6 +134,6 @@ router.put('/:id', controller.updatePatient);
  *       200:
  *         description: Deleted successfully
  */
-router.delete('/:id', controller.deletePatient);
+router.delete('/:id', isAuthenticated, controller.deletePatient);
 
 module.exports = router;
